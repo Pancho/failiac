@@ -97,7 +97,7 @@ var Failiac = (function () {
 				u.fillData('All');
 				u.drawChart('Simulated Earth Population', [u.superimpose('All')]);
 				u.fillData('Simulated Earth Population');
-				u.drawStdVsMembers('std-vs-members');
+				u.drawStdVsMembers('std-vs-members', false, false, true);
 
 				r.initFilter();
 				r.initCalculator();
@@ -280,10 +280,12 @@ var Failiac = (function () {
 				chart = new google.visualization.LineChart(document.getElementById(slug));
 				chart.draw(data, options);
 			},
-			drawStdVsMembers: function (id, width, height) {
+			drawStdVsMembers: function (id, width, height, clickable) {
 				var win = $(window),
 					stdVsCountData = [['Members', 'Percentage', {type: 'string', role: 'tooltip'}]],
 					chart = null;
+
+				clickable = !!clickable;
 
 				$.each(FailiacZodiacs.zodiacs, function (profession, blob) {
 					stdVsCountData.push([blob.members, blob.standardDeviation * 100.0, profession + ' (members: ' + blob.members + '/standard deviation: ' + (blob.standardDeviation * 100.0).toFixed(4) + 'pp)']);
@@ -317,18 +319,20 @@ var Failiac = (function () {
 //					trendlines: {0: {}} // Literally waiting on Google to release the fix for this one :) https://code.google.com/p/google-visualization-api-issues/issues/detail?id=1820&q=log%20scale&colspec=ID%20Stars%20Modified%20Type%20Status%20Priority%20Milestone%20Owner%20Summary
 				});
 
-				google.visualization.events.addListener(chart, 'select', function () {
-					var selectedItem = chart.getSelection()[0];
-						id = '';
-					if (selectedItem) {
-						id = '#profession-' + u.slugify(stdVsCountData.getValue(selectedItem.row, 2).split(' (')[0]);
-						window.location.href = id;
-						if (!$(id).data('loaded')) {
-							r.drawCollapsible($(id), true);
+				if (clickable) {
+					google.visualization.events.addListener(chart, 'select', function () {
+						var selectedItem = chart.getSelection()[0];
+							id = '';
+						if (selectedItem) {
+							id = '#profession-' + u.slugify(stdVsCountData.getValue(selectedItem.row, 2).split(' (')[0]);
+							window.location.href = id;
+							if (!$(id).data('loaded')) {
+								r.drawCollapsible($(id), true);
+							}
+							$(id).next().show();
 						}
-						$(id).next().show();
-					}
-				});
+					});
+				}
 			},
 			initialize: function () {
 				r.percentageFormatter = new google.visualization.NumberFormat({pattern: '#,###.0000%'});
