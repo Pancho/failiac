@@ -1,0 +1,71 @@
+body {color:#fff;font-family:"Segoe UI", "Open Sans", sans-serif;}
+
+
+#welcome {background-color:#009999;padding:200px 0 300px 0;}
+#welcome h1 {margin:0 auto;width:1300px;font-size:50px;text-transform:uppercase;text-align:center;padding:0 0 50px;border-bottom:2px solid #fff;}
+#welcome p {margin:30px auto 0 auto;width:1100px;font-size:30px;line-height:50px;text-transform:uppercase;text-align:center;}
+
+
+#sorting {background-color:#009090;}
+#sorting ol {margin:0 auto;width:1300px;}
+#sorting li {display:inline-block;padding:20px 50px 20px 0;}
+#sorting li .title {font-size:20px;line-height:30px;}
+#sorting li .fa {margin:0 0 0 20px;height:20px;cursor:pointer;font-size:20px;line-height:30px;}
+#sorting li a {font-size:20px;line-height:30px;color:#f0f0f0;text-decoration:none;}
+#sorting form {margin:0 auto;width:1300px;padding:20px 0 0 0;}
+#sorting form fieldset {}
+#sorting form fieldset input {font-size:20px;padding:10px;width:100%;border:1px solid #eee;}
+
+
+#special {background-color:#3399ff;}
+#professions {background-color:#cc3333;}
+#calculator {background-color:#663366;}
+
+.graphs {padding:50px 0;}
+.graphs h2 {margin:0 auto 30px auto;width:1300px;font-size:30px;}
+.graphs h3 {margin:0 auto 30px auto;width:1300px;font-size:20px;}
+.graphs p {margin:0 auto 30px auto;width:1300px;font-size:15px;line-height:20px;}
+.graphs p a {color:#fff;}
+.graphs .data {margin:30px auto;width:1300px;}
+.graphs .data dl {display:inline-block;width:250px;vertical-align:top;margin:0 20px 0 0;}
+.graphs .data dl dd {float:left;font-size:14px;width:136px;padding:7px;}
+.graphs .data dl dt {float:right;font-size:14px;width:86px;padding:7px;}
+.graphs .data dl dd.superimpose {width:200px;}
+.graphs .data dl dd.superimpose a {color:#fff;}
+.graphs .data dl dt.superimpose {width:0;}
+.graphs .data div {display:inline-block;vertical-align:top;}
+
+.data dl .count {background-color:rgba(0,0,0,.2);}
+.data dl .max {background-color:rgba(0,0,0,.2);}
+.data dl .average {background-color:rgba(0,0,0,.2);}
+.data dl .median {background-color:rgba(0,0,0,.2);}
+
+#professions h3 {cursor:pointer;}
+
+
+#calculator form {margin:0 auto 30px auto;width:1300px;}
+#calculator form fieldset {}
+#calculator form fieldset label {display:inline-block;font-size:20px;margin:0 30px 0 0;padding:5px;}
+#calculator form fieldset input {display:inline-block;font-size:20px;border:1px solid #eee;padding:5px;width:300px;}
+
+
+@media all and (max-width:980px) {
+    body {width:100%;}
+	#welcome h1 {width:80%;}
+	#welcome p {width:90%;}
+
+	#sorting ol {margin:0 auto;width:90%;}
+	#sorting li {display:block;padding:20px 50px 20px 0;}
+	#sorting form {width:90%;padding:20px 0 0 0;}
+
+    .graphs h2 {width:90%;}
+	.graphs h3 {width:90%;}
+	.graphs p {width:90%;}
+	.graphs .data {width:90%;}
+	.graphs .data dl {display:inline-block;width:90%;}
+	.graphs .data .chart {display:block;width:90%;}
+
+    .graphs .data dl dd {width:50%;padding:7px 0;}
+	.graphs .data dl dt {width:50%;padding:7px 0;}
+	.graphs .data dl dd.superimpose {width:100%;}
+}

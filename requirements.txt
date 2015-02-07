@@ -1,0 +1,9 @@
+# *****************************************************************************************
+# ** Install this with "pip install -r requirements.txt" once you have virtualenv set up **
+# *****************************************************************************************
+# Apparent suspect for awesome web apps
+django==1.7.1
+# Python MongoDB connector
+pymongo
+# Statistics helper (for windows, and if it doesn't install, you get it here: http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy and then copy it manually to your virtualenv folders)
+numpy

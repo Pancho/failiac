@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>panco.si - Failiac</title>
+		<link rel="stylesheet" type="text/css" href="/media/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/media/css/default.css" />
+		<link rel="stylesheet" type="text/css" href="/media/css/font-awesome.css" />
+		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" />
+	</head>
+	<body data-page="facts">
+		<div id="welcome">
+			<h1>Zodiac Professions</h1>
+			<p>Ever wondered what your zodiac says about your profession?<br />You won't find a straight answer here!</p>
+		</div>
+		<div id="sorting">
+			<form action="" method="get">
+				<fieldset>
+					<input type="search" name="filter" id="filter" placeholder="Filter by Profession Name" required="required" />
+				</fieldset>
+			</form>
+			<ol>
+				<li><a class="sortable members" href="#by-number-of-people">Sort by Number of People</a><span class="fa fa-sort-amount-asc"></span></li>
+				<li><a class="sortable range" href="#by-inconsistency">Sort by Inconsistency</a><span class="fa fa-sort-amount-asc"></span></li>
+				<li><a class="sortable standard-deviation" href="#by-standard-deviation">Sort by Standard Deviation</a><span class="fa fa-sort-amount-asc"></span></li>
+				<li><a href="#special" title="Birthed, All and Standard Deviation VS Members">Special Cases</a></li>
+			</ol>
+		</div>
+		<div id="professions" class="graphs">
+			<h2>By Profession</h2>
+		</div>
+		<div id="special" class="graphs">
+			<h2>Special Cases</h2>
+			<h3 id="profession-birthed">Birthed</h3>
+			<p>This one isn't really a profession :) Think of it as to which zodiac sign you'd belong if you were born on a random day in a non-leap year (365 days).</p>
+			<div class="data" id="data-birthed">
+				<dl>
+					<dd class="count">People Count</dd>
+					<dt class="count"></dt>
+					<dd class="min">Minimum percentage</dd>
+					<dt class="min"></dt>
+					<dd class="max">Maximum percentage</dd>
+					<dt class="max"></dt>
+					<dd class="range">Range (max - min)</dd>
+					<dt class="range"></dt>
+					<dd class="average">Average</dd>
+					<dt class="average"></dt>
+					<dd class="mean">Mean</dd>
+					<dt class="mean"></dt>
+					<dd class="median">Median</dd>
+					<dt class="median"></dt>
+					<dd class="std">Standard Deviation</dd>
+					<dt class="std"></dt>
+				</dl>
+				<div id="birthed" class="chart"></div>
+			</div>
+			<p>Why not a straight line? Well, each sign isn't contained in the same amount of days in a year. So if we had an infinite amount of people we'd have the same distribution.</p>
+			<h3 id="profession-all">All</h3>
+			<p>Among the <span id="pop-count"></span> people entites parsed from <a href="https://www.freebase.com/" target="_blank">freebase</a> on 2014 September 22. this is the distribution of zodiac signs:</p>
+			<div class="data" id="data-all">
+				<dl>
+					<dd class="count">People Count</dd>
+					<dt class="count"></dt>
+					<dd class="min">Minimum percentage</dd>
+					<dt class="min"></dt>
+					<dd class="max">Maximum percentage</dd>
+					<dt class="max"></dt>
+					<dd class="range">Range (max - min)</dd>
+					<dt class="range"></dt>
+					<dd class="average">Average</dd>
+					<dt class="average"></dt>
+					<dd class="mean">Mean</dd>
+					<dt class="mean"></dt>
+					<dd class="median">Median</dd>
+					<dt class="median"></dt>
+					<dd class="std">Standard Deviation</dd>
+					<dt class="std"></dt>
+				</dl>
+				<div id="all" class="chart"></div>
+			</div>
+			<p>There were in fact about 3.3M person entities, but not all had birth dates in a form that could be salvaged; missing day, or even month, in most cases no birth date at all.</p>
+			<h3 id="profession-simulated-earth-population">Simulated Earth Population</h3>
+			<p>I've also generated a simulated population of our planet. I've taken estimate of people from <a href="http://www.worldometers.info/world-population/" target="_blank">World Meters</a> and rounded it to something sensible.</p>
+			<div class="data" id="data-simulated-earth-population">
+				<dl>
+					<dd class="count">People Count</dd>
+					<dt class="count"></dt>
+					<dd class="min">Minimum percentage</dd>
+					<dt class="min"></dt>
+					<dd class="max">Maximum percentage</dd>
+					<dt class="max"></dt>
+					<dd class="range">Range (max - min)</dd>
+					<dt class="range"></dt>
+					<dd class="average">Average</dd>
+					<dt class="average"></dt>
+					<dd class="mean">Mean</dd>
+					<dt class="mean"></dt>
+					<dd class="median">Median</dd>
+					<dt class="median"></dt>
+					<dd class="std">Standard Deviation</dd>
+					<dt class="std"></dt>
+				</dl>
+				<div id="simulated-earth-population" class="chart"></div>
+			</div>
+			<p>I intentionally didn't superimpose "Birhted" onto this chart, because the main line wouldn't be visible if I did.</p>
+			<h3>Members Vs Standard Deviation</h3>
+			<p>This one is interesting and telling. It's, in my opinion, the reason for the subtitle.</p>
+			<div class="data" id="data-std-vs-members">
+				<div id="std-vs-members" class="chart"></div>
+			</div>
+			<p>If you have a little courage to draw a line through this dataset you will realize one thing: the more members you have in a group, there's less indication that one profession suits one sign better than the others.</p>
+			<p>If there was a dataset large enough to cover every employed person on the planet, one would realize that there is no visible or otherwise notable correlation between zodiac signs and chosen profession.</p>
+		</div>
+		<script type="text/javascript" src="/media/js/jquery.js"></script>
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		<script type="text/javascript" src="/media/js/zodiacs.js"></script>
+		<script type="text/javascript" src="/media/js/failiac.js"></script>
+		<script>
+			(function (i, s, o, g, r, a, m) {
+				i['GoogleAnalyticsObject'] = r;
+				i[r] = i[r] || function () {
+					(i[r].q = i[r].q || []).push(arguments)
+				}, i[r].l = 1 * new Date();
+				a = s.createElement(o),
+						m = s.getElementsByTagName(o)[0];
+				a.async = 1;
+				a.src = g;
+				m.parentNode.insertBefore(a, m)
+			})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+			ga('create', 'UA-52777392-1', 'auto');
+			ga('send', 'pageview');
+		</script>
+	</body>
+</html>
