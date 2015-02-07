@@ -26,7 +26,7 @@ If it wouldn't be, this would be no research.
 
 
 ### Data collection
-1. You will need an account for Google's APIs and paste it to api/utils.py FREEBASE_API_KEY variable
+1. You will need an account for Google's APIs and paste it to external/utils.py FREEBASE_API_KEY variable
 2. To get people entities, run python manage.py getpeople
 2.1. This is not optional: to parse people's birthdays and save them, run python manage.py parsebirthdays
 3. To get professions, run python manage.py getprofessions
